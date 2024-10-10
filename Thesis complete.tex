@@ -1,0 +1,946 @@
+\documentclass[14pt,one side, a4paper]{extbook}
+\usepackage{amsmath}
+\usepackage{url}
+\usepackage{graphicx}
+\begin{document}
+	\begin{titlepage}
+		\centering{\LARGE\textbf{A STUDY OF\\\vspace{0.1cm}COUETTE - POISEUILLE FLOW}}\\ \vspace{0.1cm}\Large{\textbf{Master's Thesis}}\\ 
+		Submitted in the Partial\\ Fulfillment for the Degree of\\\vspace{0.1cm}\Large{\textbf{Master of Science}}\\ in\\ {\textbf{Mathematics}}\\{By}\\{\textbf{Siddhant Upadhyay}}\\{M.Sc. II Sem IV}\\{2210084230053}\\{Under the supervision of}\\{\textbf{Dr. Amit Kumar Gupta}}
+		\begin{center}
+			\includegraphics[width=0.25\linewidth]{"../COLEGE LOGO"}
+		\end{center}
+		
+			{\textbf{Department of Mathematics}\\
+				{B.S.N.V.P.G. COLLEGE (KKV)}}\\
+			(University of Lucknow)\\
+		{Station Road, Charbagh, Lucknow-226001}\\
+		{Session  2023-2024}
+	\end{titlepage}
+	\setcounter{tocdepth}{2}
+		\chapter*{\centering \Large CERTIFICATE}
+			\addcontentsline{toc}{chapter}{Certificate}
+		 \begin{Large}
+		 This is to certify that the thesis entitled, “A STUDY OF COUETTE - POISEUILLE FLOW”, which is being submitted by Mr. SIDDHANT UPADHYAY for the award of degree M.Sc. in Mathematics to the B.S.N.V.P.G. College, Lucknow. Certified further, that to the best of my knowledge, the work reported here  does not form part of any other thesis or dissertation, the basis of which a degree or award was conferred on an earlier occasion to this or any other candidate. He has fulfilled the prescribed conditions given in ordinances and regulations of the University of Lucknow, Lucknow.
+		\end{Large}
+		\vspace{3.2cm}
+		\begin{flushright}
+			\begin{flushleft}
+			Date:
+		\end{flushleft}
+		\textbf{SUPERVISOR}\\\textbf{Dr. Amit Kumar Gupta}\\Assistant Professor\\Deptt. of Mathematics\\B.S.N.V.P.G. COLLEGE\\Lucknow
+				\end{flushright}
+			\chapter*{\centering {\Large DECLARATION}} 
+			\addcontentsline{toc}{chapter}{Declaration}
+			\begin{Large}
+				I, hereby, declare that the thesis entitled “A STUDY OF COUETTE -  POISEUILLE FLOW”  which is being submitted by me for the award of degree M.Sc. in Mathematics to the B.S.N.V.P.G. College, Lucknow, is a record of my own work carried out under the supervision and guidance of Dr. Amit Kumar Gupta, Assistant Professor, Department of Mathematics, B.S.N.V.P.G. College, Lucknow. To the best of my knowledge, this thesis has been submitted to B.S.N.V.P.G. College, Lucknow in ordinances and regulations of the University of Lucknow, Lucknow for securing the award of M.Sc. degree in Mathematics.
+				\end{Large}
+				\vspace{4cm}
+				\begin{flushright}
+					\textbf{SIDDHANT UPADHYAY}\\M.Sc. Mathematics, II Yr. Sem. 4\\Roll. No. 2210084230053\\B.S.N.V. P.G. College (KKV)
+					\end{flushright}	
+		\chapter* {\centering{\Large ACKNOWLEDGEMENT}}
+		\addcontentsline{toc}{chapter}{Acknowledgement}
+		\begin{Large}
+		First and foremost, I am deeply grateful to my thesis supervisor, Dr. Amit Kumar Gupta, Assistant Professor, for his invaluable guidance, encouragement, and expertise throughout the entire process. His insightful feedback, patience, and unwavering support has been instrumental in shaping this work. I am indebted to the head of department, Professor Deepak Kumar Srivastava,  faculties and staff of Department of Mathematics at B.S.N.V.P.G. College for providing a conducive academic environment and access to resources essential for conducting this master thesis.
+		My heartfelt thanks go to my family for their unconditional love, encouragement, and understanding throughout this journey. Their unwavering support has been a constant source of strength and motivation for me.
+		I am also grateful to my friends and classmates for their encouragement, insightful discussions, and moral support during challenging times.
+		Lastly, I would like to express my profound gratitude to all the researchers, scholars, and authors whose work has served as a source of inspiration and knowledge for this master thesis.
+		
+		This master thesis would not have been possible without the support and contributions of all those mentioned above, and for that, I am truly grateful.
+		\end{Large}\vspace{3cm}
+		\begin{flushright}
+			\textbf{SIDDHANT UPADHYAY}\\M.Sc. II Yr Sem 4,\\Roll No. 2210084230053\\Deptt. Of. Mathematics, \\B.S.N.V.P.G. College, Lucknow
+		\end{flushright}
+		\chapter*{ \centering NOMENCLATURE}
+		\addcontentsline{toc}{chapter}{Nomenclature}
+		\begin{enumerate}
+			\item {BCE\hspace*{0.5cm} Before Common Era}
+			\item {CE\hspace*{1cm}Common Era}
+			\item {h\hspace*{1.5cm}height between the channels}
+			\item {U\hspace*{1.2cm} velocity of the upper plate}
+			\item {$\mu$\hspace*{1.5cm}viscosity}
+			\item {$\nu\hspace*{1.4cm}\textrm{ Kinematic viscosity}$}
+			\item {$\rho$\hspace*{1.6cm}density}
+			\item {P\hspace*{1.4cm} Pressure}
+			\item {t\hspace*{1.7cm}time}
+			\item {$u_{s}$\hspace*{1.5cm}slip velocity}
+			\item {$u_{g}$\hspace*{1.5cm}velocity of the fluid adjacent to the wall}
+			\item {$u_w$ \hspace*{1.3cm}velocity of the wall}
+			\item {$\sigma_{v}$\hspace*{1.6cm}tangential momentum accommodation coeffecient}
+			\item {$\lambda$\hspace*{1.8cm}mean free path}
+			\item {$\vec{q}$\hspace*{1.8cm}velocity vector}
+			\item {$C_v$ \hspace*{1.3cm} specific heat}
+			\item {T\hspace*{1.1cm} temperature of the stream}
+			\item {$T_0$\hspace*{1cm} initial temperature}
+			\item {$T_1$\hspace*{1.2cm}final temperature}
+			\item {$\kappa$\hspace*{1.3cm} thermal conductivity}
+			\item {$Re$\hspace*{1cm} Reynolds' Number}
+			\item {$Br$\hspace*{1.2cm}Brinkman Number}
+			\item {$Kn$\hspace*{1.1cm}Knudsen Number}
+			\item {$\nabla$\hspace*{1.5cm}Differential operator}
+			\item {$\nabla^{2}\hspace*{1.4cm}\textrm{Laplacian operator}$}
+			\item{$\alpha$\hspace*{1.6cm}dimensionless pressure parameter}
+			\item {Q\hspace*{1.6cm}volumetric flow rate}
+			\item {$\tau_{y=0}$\hspace*{1.2cm}skin friction of stationary plate}
+			\item {$\tau_{y=h}$\hspace*{1.2cm}skin friction for moving plate}
+		\end{enumerate}
+		\cleardoublepage
+		\addcontentsline{toc}{chapter}{\listfigurename}
+		\listoffigures
+		\tableofcontents
+
+	\chapter{Introduction}
+	\section{General} The development in the field of Fluid Mechanics is considered to be of utmost importance and has immensely contributed to the field of Physics and Engineering. The field of fluid mechanics has gone through a continuous evolution because of presence of fluids in every possible domain like geology, meteorology, biology, etc.
+	In earlier times, civilizations thrived along the bank of rivers like Indus Valley civilization. Their success can be attributed to the concrete understanding of this domain which helped them in the constructions of canals and aqueducts for water distribution and farm irrigation. It also made maritime transportation possible, a result of which can be seen in the current era.
+	The conceptual complexity of this domain has made the discovery in this field excessively relying on experiments which further were complemented with the advanced knowledge in the field of differential equations and various computational methods.
+	\section{Historical developments}
+	Since fluid is present in our maximum scenarios of life, it is rooted in the history of humanity and hence its development can be classified according to 5 major historical periods,\cite{rosentrator} viz. Antiquity, Classical Civilization, the Middle Ages, the Renaissance through the Industrial Revolution and the post Industrial Revolution (modern) period.
+	\subsection{Antiquity} The phase of antiquity can be considered prior to approximately 500 BCE where application of fluid mechanics for practical purposes was a nascent concept like water distribution system for irrigation. Irrigation systems helped in increasing crop cultivation and hence nourishment of civilizations around rivers. For example, in Indus Valley Civilization, Harappa was developed with efficient drainage system to collect rainwater across the city and all the houses were equipped with indoor toilet and plumbing facilities with the connected sewer system.
+	\subsection{Classical Civilization}The phase of Classical Civilization can be considered approximately from 500 BCE to CE 500. It is centered on the Greek and Roman empires. When cities reached new tiers of complexity, many projects were constructed considering the style of architecture like large bathing house, large aqueducts which helped in convergence of water into Rome from distant water bodies.
+	Some ancient Chinese philosophers observations on specific gravity and buoyancy were also recorded in this phase.
+	Later on Archimedes principle by Archimedes which was published in his work, \textit{``On Floating Bodies"} came into existence which states that a body immersed in a fluid experiences a buoyant force equal to that of the weight of the fluid it displaces. i.e. when in equilibrium each fluid particle of a fluid mass is pressed equally in every direction.
+	\subsection{Middle Ages} 
+	This phase is broadly considered from approximately CE 500 to 1400, which experienced feeble developments to the knowledge base of fluid mechanics.
+	Abu Rayhan Biruni, CE (973 – 1048), also known as al-Biruni developed experimental methods to determine density by using a hydrostatic balance, which is precise and helped him to measure the density of many substances like  gems, metals, etc.
+	In this phase, Al-Khazini CE (1115 – 1130) in among his best known works \textit{``The Book of the Balance of Wisdom"}, which is an encyclopedia of mechanics and hydro statics cites about the invention of a hydro static balance.
+    \subsection{Industrial Revolution Period}
+    The phase of the Renaissance and Industrial Revolution from CE 1400 to 1900 had witnessed revived enthusiasm in inquiring the nature of fluids outspread rapidly.During this phase, `Leonardo da Vinci' made rapid development for formulating the conservation of mass in one dimensional steady flow.`Benedetto Castelli' and `Evangelista Torricelli' who were the disciples of `Galileo'. In 1628 CE, `Castelli' explained several phenomena in the motion of fluids in rivers and canals. Similarly, `Torricelli' deduced the proposition that the velocities of liquids are as the square root of the head apart from the resistance of the air and the friction of the orifice.
+	In this phase, `Blaise Pascal' worked in the field of hydrodynamics and hydro statics which was focused on the principles of hydraulic fluids. He invented hydraulic press and the syringe.
+	Later, `Sir Isaac Newton' throw much emphasis on several branches of hydro mechanics. His investigations were centered at friction and viscosity and later many revelations occurred by `Daniel Bernoulli' with the introduction of mathematical fluid dynamics in \textit{``Hydrodynamica"} (1739).
+	\subsection{Post Industrial Revolution Period} Later in 20th century, German scientist `Ludwig Prandtl' spearheaded boundary layer theory by applying Bernoulli's principle and Euler equation.
+	Gradually, mathematical justification was made by `Claude Louis Navier' and `George Gabriel Stokes' in the Navier Stokes equations and boundary layers were investigated. Scientist like `Osborne Reynolds', `Andrey Kolmogorov' and `Geffrey Ingram Taylor' foster the understanding of fluid viscosity and turbulence.
+	\section{Introduction of Fluid Mechanics}
+	Mechanics is the branch of Physics which deals with the mechanics of fluid, i.e., liquids, gases and plasma, and associated forces with them. This field has a wide ranging applications in the fields like mechanical, aerospace, civil, chemical, biomedical engineering, etc. It can be further classified into two disciplines viz fluid statics and fluid dynamics.The branch of fluid mechanics which deals with fluid at rest is called fluid statics whereas the branch of fluid mechanics which deals with the effects of forces of fluid motion is called fluid dynamics. In the existing context, we will confine our considerations to the fluid dynamics.
+	\section{Continuum Hypothesis}
+	By fluids, we mean liquids and gases in general, which are among the states of matter and are made up of atoms and molecules. They are always in a state of random motion. Since the use of mathematical methods are appreciated, it is imprudent to study the individual behavior of molecules rather considering  the macroscopic or bulk behavior of fluid by assuming that fluid is continuously distributed in a given space. This phenomena is known as Continuum Hypothesis\cite{gk10}.
+	 \section{Viscosity (Internal friction)}
+	 In nature, we often come across an event that the moment of a substance is much easier than any other substance (air and water in general). This withdraws our attention towards the existence of a property of a fluid which alters its rate of flow. This property of fluid is known as viscosity. In other words, viscosity is that property of fluid which exerts certain resistance to the motion of fluid. All fluids in nature possess this property in varying degrees. To understand the nature of viscosity, consider two parallel plates separated by a small distance $h$ along the $y$ direction and it is extended infinitely in both the directions and a fluid is sandwiched between the plates, which is initially at rest. Now consider the upper plate is moving with velocity $U$ in the $x$ direction and the lower plate is at rest then by the property of fluid and no-slip condition, the fluid layer will also move in the $x$ direction, which is near the upper plate while the fluid between the plates posses a linear velocity profile considering there is no pressure gradient along the plate in the direction of motion. The relative velocity between a solid surface and a fluid is zero for all fluids which is established by an experimental observation. It implies that the fluid layer which is at $y = 0$ will be at rest and the fluid layer at the upper plate at $y = h$ will move with a velocity $U$\cite{yuansw}.
+	 \section{Fluid Element}
+	 An imaginary small elementary length, area or volume which is considered in a fluid flow field to generalize the kinematic or dynamic constraints subjected to obtain the related differential equation is called fluid element. The small element has to be assumed to be in the continuum so that macroscopic variables/properties like pressure, viscosity, etc. can be easily defined. In general, it is a mathematical entity to apply the laws of calculus and obtain the differential equations\cite{landau}. 
+	 \section{Classification of fluids}
+	 With due consideration of fluids properties, the fluids can be classified as follows\cite{raisinghania}:-
+	 \subsection{Incompressible and Compressible fluids}
+	 Since fluids are substances which have the ability to flow, i.e., gases and liquids. The fluids which can be compressed by an external subjection of force are said to be compressible fluids. Gases are compressible, their density changes as they are compressed and it also changes with the temperature and pressure. In situations like sound propagation, the liquids are considered compressible. The fluids which cannot be compressed by an external subjection of force are said to be incompressible fluids. Particles are closer in liquids which makes their compressibility difficult and hence for many purposes, we treat liquid to be incompressible. The density of compressible fluids are variable whereas it is constant for incompressible fluid. The viscosity of both the fluids may or may not be equal to zero. 
+	 \subsection{Real and ideal fluids} According to Newton's law of viscosity, the shear stress $\tau$ on top of a fluid element is directly proportional to the rate of strain $\frac{du}{dy}$, Where $\mu$ is coefficient of viscosity. The fluids are said to be real if they exhibit the property of viscosity or internal friction and the fluids are said to be ideal if they do not exhibit the property of viscosity. From above relation, it implies that $\tau$ vanishes either for $\mu=0 \hspace*{0.2cm}\textrm{or for}\hspace*{0.2cm} \frac{du}{dy}=0$
+	 In many cases, real fluids with a small viscosity and small velocity gradient are often regarded as frictionless or inviscid. The density and the viscosity of real fluids are variable and non zero respectively whereas for ideal fluids the density is constant and viscosity is zero. 
+	
+	 
+	 \subsection{Newtonian and non-Newtonian fluids} The fluids are said to be newtonian if they obey the Newton's law of viscosity the example of such fluids are water and air. The fluids are said to be non Newtonian if they do not obey the Newton's law of viscosity. The example of such fluids are tar and some polymer. The density for Newtonian or non-Newtonian fluids may be constant or variable and the viscosity for Newtonian fluids is non zero and for non-Newtonian fluids it may not be non-zero.
+	\section{Some important types of flows}	
+	\begin{figure}[ht]
+		\centering
+		\includegraphics[width=0.5\linewidth]{streamline}
+		\caption{ Laminar Flow}
+		\label{fig:streamline}
+	\end{figure}
+	\begin{figure}[ht]
+		\centering
+		\includegraphics[width=0.5\linewidth]{"turbulent flow"}
+		\caption{Turbulent Flow}
+		\label{fig:turbulent-flow}
+	\end{figure}
+	
+	\subsection{Laminar and Turbulent flows} Laminar flow is defined as a flow in which the flow of fluid particle is smooth and the layers in the flow do not mix microscopically. In this type of flow layers will collide over each other without getting mixed. Turbulent flow is defined as a flow in which the fluid layers merge microscopically and the velocity, temperature, mass concentration,etc.  at any point is found to vary over a period of time.
+	\subsection{Steady\hspace*{0.5cm} and\hspace*{0.5cm} Unsteady\hspace*{0.5cm} flows}
+	 A \hspace*{0.2cm}flow is \hspace*{0.2cm}said to be steady if in the motion of the fluid, the properties and conditions say $P$ is independent of the time $t$ and the flow patterns remains unchanged with the time. It is mathematically denoted as,
+	\begin{equation*}
+		 \frac{\partial{P}}{\partial{t}}=0
+	\end{equation*}
+		 where $P$ may be temperature, pressure, velocity, density, etc.
+	A flow is said to be unsteady if in the motion of the fluid, the properties and conditions are dependent on time $t$ and the flow pattern changes with the time $t$.
+	\subsection{Uniform and non-Uniform flow} A flow is  said to be uniform if the fluid particles possess equal velocity at each portion of the channel or pipe whereas a flow is said to be non- uniform if the fluid particle possess unequal velocity at each section of the channel or pipe.
+	 
+	 \section{Body and surface forces} In Fluid Dynamics, forces acting on fluid elements are of two types, namely body forces and surface forces \cite{warsi}. A force which is distributed over the entire volume or mass of the element is called Body force. For e.g., gravitational force, electric fields, magnetic fields, etc.
+	 A force which acts on the surface of the fluid element is called Surface forces. For e.g., cohesive forces or adhesive forces. 
+	 Surface forces are of two types, the force which acts along the normal of a surface which is called normal force whereas the force which acts along the plane is called shear force.
+	 \section{Boundary Conditions}
+	 Boundary conditions in fluid dynamics refer to the set of conditions that specify the behavior of a fluid at the boundaries of a computational domain or physical system. These conditions are essential for solving the governing equations of fluid flow and determining the flow field within the domain. Boundary conditions describe how the fluid interacts with solid surfaces, interfaces, or other fluids at the boundaries.
+	 It can be classified into the following conditions:
+	 \subsection{No slip condition} A moving fluid in contact with a solid body will not have any velocity relative to the body at the surface of contact. This phenomena of fluid not slipping over a solid surface has to be satisfied by a moving fluid. This phenomena is known as no-slip condition. Since the particles of fluid closer to the surface posses greater adhesion than cohesion, this force imbalance cause the fluid velocity to be zero adjacent to the solid surface. This concept is defined for viscous flows and the condition where the continuum concept is valid.
+	 \subsection{Slip condition}
+	  In Fluid Dynamics, a  slip condition refers to the behavior of  fluid molecules at a solid boundary, where the fluid velocity relative to the solid surface is not zero. This non-zero relative velocity between the fluid and the solid boundary results in slip, meaning that the fluid molecules ``slip" or move along the boundary rather than adhering to it. The slip condition is typically characterized by a slip length, denoted as $L$ which quantifies the extent of slip at the solid-fluid interface. The slip length represents the distance from the solid boundary over which the fluid velocity transitions from the no-slip condition (zero velocity at the boundary) to the bulk fluid velocity \cite{Lopez,wilson}.
+	 \subsection{Maxwell first-order slip condition}
+	 The Maxwell first-order slip condition is a boundary condition used in Fluid Mechanics to model slip at a fluid-solid interface, where the fluid velocity at the boundary is related to the tangential velocity gradient. It is a simplification of more complex slip models and is suitable for moderate slip effects, where the slip length is small relative to the characteristic length scales of the flow. It is often used in theoretical and computational studies to account for slip at fluid-solid interfaces, particularly in microfluidics, nanofluidics, and other situations where the no-slip assumption breaks down. Maxwell's first-order slip flow is given by:
+	 \begin{equation}
+	 u_{s}=u_{g}-u_{w}=\frac{2-\sigma_{v}}{\sigma_{v}}\left[\lambda\frac{\partial u}{\partial y}\right]
+	\end{equation}
+	 Where, $\sigma_{v}$ is tangential momentum accommodation coefficient and it is given by, $$\sigma_{v}=\frac{\tau_{i}-\tau_{r}}{\tau_{i}-\tau_{w}}$$
+	 In general, the tangential velocity one mean free path away from the boundary is called slip velocity, which implies that the reflections at the boundary will result in higher slip velocity. Since longer mean free path results in the presence of solid collisions at the vicinity of the boundary, the system  may be considered to be slightly rarefied \cite{shu}.
+	 \section{Velocity vector} Consider a point $p$ in space and $\vec{q}$ be the position vector of that point if the point $p$ moves then the velocity is defined as:
+	 $$\vec{q}=u\hat{i}+v\hat{j}+w\hat{k}$$
+	 where $u,v,w$ are velocity components with respect to  the coordinate axis respectively.
+	 \section{Some important equations}
+	 	\subsection{Equation of continuity}
+	 	The equation of continuity for an incompressible fluid flow is given by:
+	 	\begin{equation}
+	 	\frac{\partial{u}}{\partial{x}}+\frac{\partial{v}}{\partial{y}}+\frac{\partial{w}}{\partial{z}}=0
+	    \end{equation}
+	 	\subsection{Energy equation}
+	 	The energy equation for combined Couette-Poiseuille flow is given by:
+	 	\begin{equation}
+	 	\rho C_{v}u\left(\frac{\partial T}{\partial x}\right)=k\left(\frac{\partial^{2}T}{\partial x^{2}}+\frac{\partial^{2}T}{\partial y^{2}}\right)+\mu\left(\frac{\partial u}{\partial y}\right)^{2}
+	    \end{equation}
+	 	
+	 	where, $\rho$ is density, $\kappa$ is thermal conductivity, $C_v$ is heat capacity at constant volume and $T$ is temperature.
+	 	
+	 	\subsection{Navier-Stokes Equation}
+	 	The Navier-Stokes equation in vector form is given by:
+	 		\begin{equation}
+	 		\frac{\partial q}{\partial t} + (q \cdot \nabla) q = -\frac{1}{\rho} \nabla p + \nu \nabla^2 q 
+	 		\end{equation}
+	 	
+	 	where,
+	 		$q$ is the velocity field,
+	 		$t$  is time,
+	 		$p$  is the pressure,
+	 		\( \rho \) is the fluid density,
+	 		\( \nu \) is the kinematic viscosity of the fluid,
+	 		\( \nabla \) is the del operator,
+	 		\( \nabla^2 \) is the Laplacian operator,
+	 		
+	 	This equation represents the conservation of momentum for a fluid, taking into account the effects of pressure gradients, viscous forces and external forces.
+	 \section{Associated dimensionless numbers}
+	 \subsection{Reynold's Number}
+	 	It is a dimensionless quantity that helps predict the fluid flow pattern under different circumstances by quantifying the ratio between inertial and viscous forces. It can be represented mathematically as,
+	 	$$Re=\frac{\rho U h}{\mu}$$
+	 	where, $\rho$ is density, $\mu$ is coeffecient of viscosity, $U$ is the velocity and $h$ is the height between parallel plates. When the fluid properties are considered constant, the flow is accounted as laminar if $Re<1500$ \cite{gk10,frank,raisinghania}.
+	 	\subsection{Brinkman number}
+	 	 The Brinkman number (Br) is a dimensionless parameter used in fluid mechanics to characterize the relative importance of viscous forces to inertial forces in a flow field. It is particularly relevant in situations where fluid flow occurs through porous media or confined spaces, such as in porous materials, packed beds, or microchannels \cite{frank,rajputrk}. The Brinkman number is defined as:
+	 	 $$Br=\frac{\mu U^{2}}{k (T_{1}-T_{0})}$$
+	 	 Where, $\mu$ is the viscosity, $\kappa$ is the thermal conductivity of the fluid, $U$ is the velocity of the upper plate, $T_{0}$ is the temperature of the lower plate and $T_{1}$ is the temperature of the upper plate.
+	 	\subsection{Knudsen Number}
+	 	The Knudsen number ($Kn$) is a dimensionless parameter used in fluid dynamics and gas dynamics to characterize the degree of non-continuum behavior of a fluid flow \cite{frank,Shabbir}. It represents the ratio of the molecular mean free path $\lambda$ of the gas molecules to a characteristic length scale $L$ of the flow geometry. The Knudsen number is defined as:
+	 		\begin{equation*}
+	 			Kn=\frac{\lambda}{L}
+	 		\end{equation*}
+	 	where, $\lambda$ is the molecular mean free path, which is the average distance a molecule travels between collisions. $L$ is a characteristic length scale of the flow, such as the gap between surfaces, or the length of a channel.	
+	 	\chapter{Couette-Poiseuille Flow}
+	 	\section{Introduction}
+	 	In neoteric years, the investigations of fluid flow between two parallel plates has seen greater significance among the budding researchers, as flow through the parallel plates are dependent on various factors viz. viscosity, pressure, temperature, body forces, etc. which determine various properties like velocity profile, volumetric flow, etc. which further give rise to many phenomenons\cite{pantakratoras}.
+	 	The combined plane Couette-Poiseuille flow has been widely studied both experimentally and numerically.
+	 	These effects are widely studied under two classification:
+	 	\begin{enumerate}
+	 		\item{the moment of the upper plate and lower remains stationary, which is widely known as Couette flow}
+	 		\item{the induced pressure gradient between two stationary parallel plates, which is  widely known as plane Poiseuille flow.}
+	 	\end{enumerate} 
+	 	The combination of these two flows give rise to Plane Couette-Poiseuille flow.
+	 	Given that the problem of parallel plates has a greater relevance in various disciplines such as Geophysical engineering, Biofluid mechanics, Tribology, etc., the researchers have shown considerable interest to investigate the flow inside these parallel plates under various conditions. 
+	 	\section{Historical background}
+	 	The plane Couette-Poiseuille flow derive its existence from 19th century when French Physicist Maurice Marie Alfred Couette conducted various experiments to investigate the flow of viscous fluids between two parallel plates. His work laid the foundation for understanding of what is known as Couette flow, which involves a viscous fluid confined between two parallel plates where one plate is stationary and the other moves with a constant velocity. Successive efforts and subsequent research by other scientists and engineers has expanded our understanding of Couette flow and its applications.The study of Poiseuille flow has got recognition in 19th century as it is the pioneering work of Jean Leonard Marie Poiseuille, a French mathematician and Physiologist.He conducted experiments to study the flow of fluids through cylindrical tubes and capillary tubes  in which pressure gradient is imposed.Gradually the study of hybrid flow has become a matter of great paramountcy for researchers, which makes it challenging to attribute the first study of combined flow to a single individual.However, one significant contribution to study the combined flows was from  Jean Claude Eugene P$\tilde{e}$clet,a French Physicist in the 19th century. Further the development in this domain was made by a British engineer and Physicist, Osborne Reynolds’, which laid the groundwork for later studies on combined Couette-Poiseuille flow and hence,the behavior of fluids in confined geometries prepared the ground work for investigation in the combined effects of Couette and Poiseuille flows.The pertinence of study of combined flows is  manifested in the development of domains like  Microfluidics, Biological waves, Rheology, transport phenomena, industrial processes, etc. We will confine our emphasis on investigations associated with combined flows.
+	 	\section{Formulation of the problem} The problem encompasses a steady incompressible fluid flow between two infinite parallel plates in the positive $x$ direction of co-ordinate axis induced by the moment of the above plate with velocity $U$ and an imposed pressure gradient $\mathbf{\frac{dp}{dx}}$ while the lower plate remains stationary. The plates are separated by a distance $h$ which is perpendicular to the plates in the positive $x$ direction of co-ordinate axis. The width of the plate is in the $z$ direction of the co-ordinate axis. 
+	 	To solve the given problem we will make certain assumptions. They are:
+	 	\begin{enumerate}
+	 		\item {Since fluid flow is steady:}$$\frac{\partial}{\partial{t}}=0$$
+	 		\item{Since it is a parallel flow:}
+	 			$$v=w=0$$ 
+	 		\item{For incompressible fluid flow the continuity equation is given by:}$$\frac{\partial{u}}{\partial{x}}+\frac{\partial{v}}{\partial{y}}+\frac{\partial{w}}{\partial{z}}=0$$
+	 		\item From assumption 2 and 3, we get:
+	 			$$\frac{\partial{u}}{\partial{x}}=0\space\Longrightarrow {u=u(y)}$$
+	 			i.e., $u$ is a function of $y$ only.
+	 		\item{The pressure gradient is given by:}$$\nabla{p}=\frac{\partial{p}}{\partial{x}}+\frac{\partial{p}}{\partial{y}}+\frac{\partial{p}}{\partial{z}}$$
+	 		Since,$\frac{\partial}{\partial{z}}=0$ and the pressure is in the positive direction of $x$-axis only, we get,$$\frac{dp}{dx}=constant$$ 
+	 		\item{The body forces are neglected in the problem. Summing up the assumptions, we get:}
+	 		\begin{equation}
+	 			\frac{\partial}{\partial{t}}=0,\space v=w=0,\space u=u(y), \space\frac{\partial}{\partial{z}}=0,\space \frac{dp}{dx}=constant  
+	 		\end{equation}
+	 	\end{enumerate}
+	 	
+	 	\section{Derivation of governing equation}
+	 	Since the given problem is a particular case of Navier-Stokes equation, consider the Navier-Stokes equation in vector form as:
+	 	\begin{equation}
+	 		\frac{\partial{q}}{\partial t} + ({q} \cdot \nabla){q} = -\frac{1}{\rho}\nabla p + \nu \nabla^2 {q}
+	 	\end{equation}
+	 	Where $\nu$ is the kinematic viscosity and it is given by:$$\nu=\frac{\mu}{\rho}$$ 
+	 	Now,from equation (2.1), equation (2.2) reduces to:
+	 	\begin{equation}
+	 		u\frac{\partial{u}}{\partial{x}}=-\frac{1}{\rho}\frac{dp}{dx}+\nu\frac{d^{2}u}{dy^{2}}
+	 	\end{equation}
+	 	Substituting  $\nu$ in above equation, we get,
+	 	\begin{equation}
+	 	\rho u \frac{\partial u}{\partial x}=-\frac{dp}{dx}+\mu\frac{d^{2}u}{dy^{2}}
+	 	\end{equation}
+	 	From assumption 4 in Art. 2.3, we get:
+	 	\begin{equation}
+	 		0=-\frac{dp}{dx}+\mu\frac{d^{2}u}{dy^{2}}
+	 	\end{equation}
+	 	Rearranging above equation we get: 
+	 	 \begin{equation}			
+	 		\frac{d^{2}u}{dy^{2}}=\frac{1}{\mu}\frac{dp}{dx}
+	 	\end{equation}
+	 	Which is the required governing equation of the problem. 
+	 	
+	 	\section{Solution of the governing equation}
+	 	Integrating equation ($2.6$) with respect to $y$ we get:
+	 	\begin{equation}
+	 		\frac{{du}}{{dy}}=\frac{1}{\mu}\frac{dp}{dx}y+C_{1}
+	 	\end{equation} 
+	 	Again integrating above equation, we get:
+	 	\begin{equation}
+	 		u=\frac{1}{2\mu}\frac{dp}{dx}y^{2}+C_{1}y+C_{2}	
+	 	\end{equation} 
+	 	Where $C_{1}$ and $C_{2}$ are arbitrary constants. Now the boundary conditions of the given problem is:
+	 	\begin{equation}
+	 		u=0\hspace{0.2cm} \textrm{at}\hspace*{0.2cm} y=0 \hspace{0.2cm}\textrm{and}\hspace{0.2cm}u=U \hspace{0.2cm}\textrm{at}\hspace{0.2cm} y=h
+	 	\end{equation} 
+	 	Now, invoking these boundary conditions on equation ($2.8$), we get:
+	 	\begin{equation}
+	 		C_{2}=0 \hspace{0.2cm}\textrm{and}\hspace{0.2cm}
+	 		U=\frac{1}{2\mu}\frac{dp}{dx}h^{2}+C_{1}h
+	 	\end{equation} 
+	 	\begin{equation}
+	 		\Longrightarrow C_{1}=\frac{U}{h}-\frac{h}{2\mu}\frac{dp}{dx}
+	 	\end{equation}
+	 	Substituting the values of $C_{1}$ and $C_{2}$ in equation($2.8$), we get:
+	 	\begin{equation}
+	 		u=\frac{1}{2\mu}\frac{dp}{dx}y^{2}+\left[\frac{U}{h}-\frac{h}{2\mu}\frac{dp}{dx}\right]y
+	 	\end{equation}
+	 	On simplifying above equation, we get:
+	 	\begin{equation}
+	 		u=\frac{U}{h}y+\frac{h^{2}}{2\mu}\frac{dp}{dx}\frac{y}{h}\left(1-\frac{y}{h}\right)
+	 	\end{equation} 
+	 	In the above equation, the first term is the solution of plane Couette flow and the second term is the solution of plane Poiseuille flow \label{Equa} . 
+	 	Since the governing equation is linear and homogeneous, we came across superposition of velocity profiles of Couette and Poiseuille flow. 
+	 	
+	 	\section{Dimensionalization of equation}
+	 	 We can rearrange the equation(11) as:
+	 	\begin{equation}
+	 		\frac{u}{U}=\frac{y}{h}+\frac{h^{2}}{2\mu{U}}\frac{dp}{dx}\frac{y}{h}\left(1-\frac{y}{h}\right)
+	 	\end{equation}
+	 	Now let $\alpha=\frac{h^{2}}{2\mu {U}}\frac{dp}{dx}$ to be a dimensionless pressure parameter.
+	 	So above equation takes the form:
+	 	\begin{equation}
+	 		\frac{u}{U}=\frac{y}{h}+\alpha\frac{y}{h}\left(1-\frac{y}{h}\right)
+	 	\end{equation} 
+	 	From above equation we can make following deductions. 
+	 	\begin{enumerate}
+	 		\item {	If $\alpha$ is greater than $0$ then pressure decreases in the positive $x$ direction of co-ordinate axis and hence fluid flow will be favored in the positive direction as fluid flow from higher pressure zone to lower pressure zone.
+	 			Therefore, velocity profile is positive which is also known as forward flow. In this case, pressure gradient is said to be favorable}
+	 		\item {If $\alpha$ is less than $0$ then pressure increases in the positive $x$ direction of co-ordinate axis and hence fluid flow will be due to pressure in opposite direction of moment of plate.
+	 			Therefore velocity profile is in opposite direction which is known as reverse flow or back flow. In this case, pressure gradient is said to be adverse.}
+	 	\end{enumerate}
+	 	
+	 	
+	 	
+	 	\section{Behaviour of fluid with respect to $\alpha$} 
+	 	In equation ($2.15$), different values of $\alpha$ represent different conditions of fluid flow. We will investigate behavior of flow for certain values of $\alpha$.
+	 	The categorization of this investigation is given as follows: 
+	 	
+	 	\subsection{When $\mathbf{\alpha=0}$}
+	 	
+	 	\begin{figure}[ht]
+	 		\centering
+	 		\includegraphics[width=0.5\linewidth]{"Couette flow"}
+	 		\caption{Couette Flow}
+	 		\label{fig:couette-flow}
+	 	\end{figure}
+	 	
+	 	
+	 	Substituting $\alpha=0$ in equation (2.15), we get:
+	 	\begin{equation}
+	 		\frac{u}{U}=\frac{y}{h}
+	 	\end{equation}
+	 	Rearranging above equation, we get:
+	 	\begin{equation}
+	 		u=\frac{U}{h}y
+	 	\end{equation}
+	 	Which is the velocity profile of plane Couette flow. The velocity profile for equation($2.16$) is given as a linear profile.
+	 	\\When upper plate moves, due to the presence of no-slip condition, topmost fluid layer moves with the plate due to cohesive force in the fluid. The sub-layers of fluid moves with the top most layer in a differentiated manner and as we move to the stationary plate, the velocity of the fluid decreases. 
+	 	\\For equation ($2.16$), average velocity is given by:
+	 	\begin{equation}
+	 		u_{av}=\frac{1}{h}\int_{0}^{h}u.dy=\frac{1}{h}\int_{0}^{h}\frac{U}{h}y
+	 	\end{equation} 
+	 	$$	u_{av}=\frac{U}{h^2}\left(\frac{y^{2}}{2}\right)_{0}^{h}$$
+	 	$$	u_{av}=\frac{U}{2}$$
+	 	Maximum velocity of equation(2.16) is $U$, which is the velocity of moving plate. 
+	 	The volumetric flow of equation is given by:
+	 	\begin{equation}
+	 		Q=h\cdot{u_{av}}
+	 	\end{equation}
+	 	$$\Longrightarrow Q=\frac{hU}{2}$$ 
+	 	The sharing stress distribution for this case is given by:
+	 	\begin{equation}
+	 		\tau=\mu \frac{du}{dy}=\mu\frac{U}{h}
+	 	\end{equation} 
+	 	The skin friction at the stagnant and moving plate is given by:
+	 	\begin{equation}
+	 		\tau_{y=0}=0\hspace{0.2cm} \textrm{and} \hspace{0.2cm}\tau_{y=h}=\mu\frac{U}{h}
+	 	\end{equation}
+	 	The coefficient of friction for this case is given by:
+	 	\begin{equation}	C_{f}=\displaystyle{\frac{\tau}{\frac{\rho u_{av}^{2}}{2}}}
+	 	\end{equation}
+	 	$${C_{f}=\frac{2\mu\frac{U}{h}}{\rho\frac{U^{2}}{4}}=\frac{8\mu}{\rho Uh}}$$ 
+	 	The coefficient of friction in terms of Reynolds' number is given by:
+	 	$$C_{f}=\frac{8}{Re}$$
+	 	Where, $$Re=\frac{\rho Uh}{\mu}$$
+	 	\subsection{When $\mathbf{\alpha \neq 0}$}
+	 	Rearranging equation (2.15), we get:
+	 	\begin{equation}
+	 		u=\frac{U}{h}y+\alpha\frac{y}{h}\left(1-\frac{y}{h}\right)
+	 	\end{equation}
+	 	When $\alpha \neq 0$, it can either assume positive values or negative values. \\Now average velocity for equation is given by:
+	 	\begin{equation}
+	 		u_{av}=\frac{1}{h}\int_{0}^{h}u\cdot dy
+	 	\end{equation} 
+	 	$$u_{av}=\frac{1}{h}\int_{0}^{h}\left[\frac{U}{h}y+\frac{h^{2}}{2\mu}\left(-\frac{dp}{dx}\right)\frac{y}{h}\left(1-\frac{y}{h}\right)\right]$$
+	 	$$u_{av}=\left(\frac{1}{2}+\frac{\alpha}{6}\right)U$$
+	 	For $\alpha=-3$, the average velocity is zero because the resultant of velocity due to Couette-Poiseuille is zero.
+	 	\\Volumetric flow rate is given by:
+	 	\begin{equation}
+	 		Q=h\cdot u_{av}=h\left(\frac{1}{2}+\frac{\alpha}{6}\right)U
+	 	\end{equation} 
+	 	Now, shear stress is given by:
+	 	\begin{equation}
+	 		\tau=\mu \frac{du}{dy}=\mu U\left[\frac{1}{h}+\frac{\alpha}{h}\left(1-\frac{2y}{h}\right)\right]	
+	 	\end{equation} 
+	 	$$\tau=\mu \frac{U}{h}\left[1+\alpha\left(1-\frac{2y}{h}\right)\right]$$
+	 	From above equation, we can deduce that at $\mathbf{y = \frac{h}{2}}$, the shear stress distribution of this case will be constant. 
+	 	\\In other words, shear stress at $\mathbf{y = \frac{h}{2}}$ is independent of the pressure parameter $\alpha$ whereas in the Couette flow, shear stress is constant for all values of $y$ as the velocity profile is linear. Hence, every particle experiences same stress. 
+	 	\\The skin friction corresponding to moving plate and stationary plate are given by:
+	 	\begin{equation}
+	 		{\tau_{y=0}=\mu\frac{U}{h}\left(1+\alpha\right)\hspace{0.2cm} \textrm{and}\hspace{0.2cm} \tau_{y=h}=\mu\frac{U}{h}\left(1-\alpha\right)}
+	 	\end{equation} 
+	 	Now, coefficient of friction corresponding to moving plate $\left(C_{f}\right)$ and stationary plate $\left(C_{f}^{'}\right)$ is given by:
+	 	\begin{equation}
+	 		{C_{f}=\frac{\left[\tau\right]_{y=0}}{\frac{\rho u_{av}^{2}}{2}}=\frac{2\mu \frac{U}{h}\left(1+\alpha\right)}{\rho\left(\frac{1}{2}+\frac{\alpha}{6}\right)^{2}U^{2}}}
+	 	\end{equation}
+	 	$$C_{f}=\frac{12\mu\left(1+\alpha\right)}{\rho hU\left(\alpha+3\right)}$$
+	 	Since, $$Re=\frac{\rho Uh}{\mu}$$
+	 	$$\Longrightarrow C_{f}=\frac{12\left(1+\alpha\right)}{Re\left(\alpha+3\right)}$$ 
+	 	and 
+	 	\begin{equation}
+	 		{C_{f}^{'}}=\frac{\left[\tau\right]_{y=h}}{\frac{\rho u_{av}^{2}}{2}}=\frac{12\mu\left(1-\alpha\right)}{\rho hU\left(\alpha+3\right)}
+	 	\end{equation}
+	 	$$\Longrightarrow C_{f}^{'}=\frac{12\left(1-\alpha\right)}{Re\left(\alpha+3\right)}$$
+	 	Since, the flow is due to shear driven flow as well as pressure driven flow, the maximum velocity will not occur at the moving plate always. 
+	 	It may occur inside the fluid domain depending on the value of the pressure parameter $\alpha$.
+	 	\\To find the location where the minimum and maximum velocity will occur, let$$\frac{du}{dy}=\frac{U}{h}+\alpha \frac{U}{h}\left(1-\frac{2y}{h}\right)=0$$ 
+	 	If $\alpha=0$ then it is plane Couette flow as it is pure shear driven flow so in that case maximum or minimum velocity will not occur inside the fluid domain, the maximum velocity in this case is $U$ and the minimum velocity is $u = 0$. 
+	 	Rearranging above equation, we get:$$\frac{U}{h}\left[1+\alpha\left(1-\frac{2y}{h}\right)\right]=0$$ 
+	 	Now, $$1+\alpha\left(1-\frac{2y}{h}\right)=0$$
+	 	$$\Longrightarrow \frac{y_{max}}{h}=\frac{1+\alpha}{2\alpha}=\frac{1}{2}+\frac{1}{2\alpha}$$
+	 	Where, $y_{max}$ is the $y$ corresponding to the location of maximum or minimum velocity. If we substitute $\alpha=1$, we get $$\frac{y_{max}}{h}=1$$ Which means when we vary $\alpha$ from 0 to 1 the maximum velocity will not occur inside the fluid domain. It will occur at the plate and if we substitute $\alpha=-1$, we get $$\frac{y_{max}}{h}=0$$ 
+	 	In other words, when the pressure gradient is adverse and $\alpha=1$, then maximum velocity is not inside the fluid domain. It implies that as $\alpha$ vary from $0$ to $1$, velocity increases monotonically from $0$ to $U$ and when $\alpha$ vary from $0$ to $-1$, velocity decreases monotonically from $U$ to $0$.
+	 	Therefore, we will differentiate our equation again,
+	 	$$\frac{d^{2}u}{dx^{2}}=-\frac{2\alpha U}{h^{2}}$$ 
+	 	It implies maximum or minimum velocity depends on pressure parameter $\alpha$. 
+	 	\\Now to find the maximum velocity inside the fluid domain, substitute $\frac{y_{max}}{h}$ in the velocity profile of this problem, we get:
+	 	\begin{equation}
+	 		u_{max}=U\frac{1+\alpha}{2\alpha}\left[1+\alpha-\alpha\left(\frac{1+\alpha}{2\alpha}\right)\right]
+	 	\end{equation} 
+	 	$$u_{max}=\frac{U(1+\alpha)^{2}}{4\alpha} \hspace{0.2cm};\hspace{1cm} \alpha\geq1$$
+	 	Since we are aware that a minimum velocity will occur inside the fluid domain when the pressure gradient is adverse 
+	 	As $\alpha$ vary from $0$ to $-1$ velocity monotonically decreases from $U$ to $0$, which implies minimum velocity inside the fluid domain will occur when $\alpha\leq1$.
+	 	\\To find the minimum velocity inside the fluid domain, let:
+	 	\begin{equation}
+	 		\frac{U}{h}y+\alpha\frac{U}{h}y\left(1-\frac{y}{h}\right)=0
+	 	\end{equation}
+	 	$$\Longrightarrow \frac{U}{h}y\left[1+\alpha-\alpha\frac{y}{h}\right]=0$$
+	 	$$\Longrightarrow 1+\alpha-\alpha\frac{y}{h}=0$$
+	 	$$\Longrightarrow \left(\frac{y}{h}\right)_{u=0}=\frac{1+\alpha}{\alpha}\hspace{0.2cm}; \hspace{0.5cm}\alpha\leq-1$$ 
+	 	
+	 	
+	 	\section{Numerical Investigation}
+	 	Since the flow of fluid in between these plates are characterized on the basis of favorable or adverse pressure gradient, we will examine maximum or minimum velocity and its location, skin friction on both the plates, volumetric flow rate, etc. under these broader classification:
+	 	\subsection{When pressure gradient is favorable }
+	 	We will examine properties of fluid flow for different values of $\alpha$.
+	 	\begin{enumerate}
+	 		\begin{figure}[ht]
+	 			\centering
+	 			\includegraphics[width=0.5\linewidth]{vp1}
+	 			\caption{Velocity Profile for $\alpha=1$}
+	 			\label{fig:vp1}
+	 		\end{figure}
+	 		\item {\underline{For $\alpha=1$:}}
+	 		\\Maximum velocty is given by:
+	 		$$\frac{y_{max}}{h}=\frac{1+\alpha}{2\alpha}=1$$
+	 		$$\Longrightarrow y_{max}=h$$
+	 		Maximum velocity in this case is at the upper plate which is given by:
+	 		$$u_{max}=\frac{U(1+\alpha)^2}{4\alpha}=\frac{U(1+1)^{2}}{4}=U$$
+	 		Skin fiction corresponding to the moving plate and stationary plate is given by:
+	 		$$\tau_{y=0}=\mu\frac{U}{h}(1+\alpha)=\mu\frac{U}{h}(1+1)=2\mu\frac{U}{h}$$
+	 		$$\tau_{y=h}=0$$
+	 		Volumetric flow is given by:
+	 		$$Q_{\alpha=1}=hu_{av}=\frac{2}{3}Uh$$Where, $u_{av}$ is average velocity for $\alpha=1$.
+	 		\begin{figure}[ht]
+	 			\centering
+	 			\includegraphics[width=0.5\linewidth]{vp2}
+	 			\caption{Velocity Profile for $\alpha=2$}
+	 			\label{fig:vp2}
+	 		\end{figure}
+	 		
+	 		\item{\underline{For $\alpha=2$:}}
+	 		\\Location of maximum velocity is given by:
+	 		$$\frac{y_{max}}{h}=\frac{3}{4}$$
+	 		$$\Longrightarrow y_{max}=\frac{3}{4}h$$
+	 		Maximum velocity is given by:
+	 		$$u_{max}=\frac{9}{8}U$$
+	 		Skin fiction corresponding to the moving plate and stationary plate is given by:
+	 		$$\tau_{y=0}=3\mu\frac{U}{h}$$
+	 		$$\tau_{y=h}=-\mu\frac{U}{h}$$
+	 		Volumetric flow is given by:
+	 		$$Q_{\alpha =2}=\frac{5}{6}hU$$
+	 		\begin{figure}[ht]
+	 			\centering
+	 			\includegraphics[width=0.5\linewidth]{"vp 3"}
+	 			\caption{Velocity Profile for $\alpha=3$}
+	 			\label{fig:vp3}
+	 		\end{figure}
+	 		
+	 		\item {\underline{For $\alpha=3$:}}
+	 		\\Location of maximum velocity is given by:
+	 		$$\frac{y_{max}}{h}=\frac{2}{3}$$
+	 		$$\Longrightarrow y_{max}=\frac{2}{3}h$$
+	 		Maximum velocity is given by:
+	 		$$u_{max}=\frac{4}{3}U$$
+	 		Skin fiction corresponding to the moving plate and stationary plate is given by:
+	 		$$\tau_{y=0}=4\mu\frac{U}{h}$$
+	 		$$\tau_{y=h}=-2\mu\frac{U}{h}$$
+	 		Volumetric flow rate is given by:
+	 		$$Q_{\alpha=3}=hU$$
+	 		\begin{figure}[ht]
+	 			\centering
+	 			\includegraphics[width=0.5\linewidth]{vp4}
+	 			\caption{Velocity Profile for $\alpha=4$}
+	 			\label{fig:vp4}
+	 		\end{figure}
+	 		
+	 		\item {\underline{For $\alpha=4$}:}
+	 		\\Location of maximum velocity is given by:
+	 		$$\frac{y_{max}}{h}=\frac{5}{8}$$
+	 		$$\Longrightarrow y_{max}=\frac{5}{8}h$$
+	 		Maximum velocity is given by:
+	 		$$u_{max}=\frac{25}{16}U$$
+	 		Skin fiction corresponding to the moving plate and stationary plate is given by:
+	 		$$\tau_{y=0}=5\mu\frac{U}{h}$$
+	 		$$\tau_{y=h}=-3\mu\frac{U}{h}$$
+	 		Volumetric flow rate is given by:
+	 		$$Q_{\alpha=3}=\frac{7}{6}hU$$
+	 	\end{enumerate}
+	 	\subsection{When pressure gradient is adverse}
+	 	We will examine properties of fluid flow for $\alpha\leq-1$. 
+	 	\begin{enumerate}
+	 		\begin{figure}[ht]
+	 			\centering
+	 			\includegraphics[width=0.5\linewidth]{vp-1}
+	 			\caption{Velocity Profile for $\alpha=-1$}
+	 			\label{fig:vp-1}
+	 		\end{figure}
+	 		
+	 		\item {\underline{For $\alpha=-1$}}
+	 		\\Location for minimum velocity is given by:
+	 		$$\frac{y_{min}}{h}=0$$
+	 		Here, minimum velocity is at the lower plate.
+	 		\\Skin fiction corresponding to the moving plate and stationary plate is given by:
+	 		$$\tau_{y=0}=0$$
+	 		$$\tau_{y=h}=2\mu\frac{U}{h}$$
+	 		Volumetric flow rate is given by:
+	 		$$Q_{\alpha=-1}=\frac{1}{3}Uh$$
+	 		\begin{figure}[ht]
+	 			\centering
+	 			\includegraphics[width=0.5\linewidth]{vp-2}
+	 			\caption{Velocity Profile for $\alpha=-2$}
+	 			\label{fig:vp-2}
+	 		\end{figure}
+	 		
+	 		\item {\underline{For $\alpha=-2$}:}
+	 		\\Location for maximum velocity is given by:
+	 		$$\frac{y_{max}}{h}=\frac{1+\alpha}{2\alpha}=\frac{1+(-2)}{-4}=\frac{1}{4}$$
+	 		$$y_{max}=\frac{h}{4}$$
+	 		Location for minimum velocity is given by:
+	 		$$\left(\frac{y}{h}\right)_{u=0}=\frac{1+\alpha}{\alpha}=\frac{1-2}{-2}=\frac{1}{2}$$
+	 		$$\Longrightarrow y_{min}=\frac{1}{2}h$$
+	 		Skin fiction corresponding to the moving plate and stationary plate is given by:
+	 		$$\tau_{y=0}=-\mu\frac{U}{h}$$
+	 		$$\tau_{y=h}=3\mu\frac{U}{h}$$
+	 		Volumetric flow rate is given by:
+	 		$$Q_{\alpha=-2}=\frac{h}{6}U$$
+	 		Maximum velocity is given by:
+	 		$$u_{max}=-\frac{U}{8}$$
+	 		Here, negative sign determines the direction of maximum velocity.
+	 		\begin{figure}[ht]
+	 			\centering
+	 			\includegraphics[width=0.5\linewidth]{velocityp-3}
+	 			\caption{Velocity Profile for $\alpha=-3$}
+	 			\label{fig:velocityp-3}
+	 		\end{figure}
+	 		
+	 		\item {\underline{For $\alpha=-3$}:}
+	 		\\Location for maximum velocity is given by:
+	 		$$\frac{y_{max}}{h}=\frac{1}{3}$$
+	 		$$\Longrightarrow y_{max}=\frac{1}{3}h$$
+	 		Location for minimum velocity is given by:
+	 		$$\left(\frac{y}{h}\right)_{u=0}=\frac{2}{3}$$
+	 		$$\Longrightarrow y_{min}=\frac{2}{3}h$$
+	 		Skin fiction corresponding to the moving plate and stationary plate is given by:
+	 		$$\tau_{y=0}=-2\mu\frac{U}{h}$$
+	 		$$\tau_{y=h}=4\mu\frac{U}{h}$$
+	 		Volumetric flow rate is given by:
+	 		$$Q_{\alpha=-3}=hu_{av}=0$$
+	 		Since, average velocity $u_{av}=0$,
+	 		$$\Longrightarrow Q_{\alpha=-3}=0$$
+	 		Maximum velocity is given by:
+	 		$$u_{max}=-\frac{1}{3}U$$
+	 		Here, negative sign determines the direction of maximum velocity.
+	 		\begin{figure}[ht]
+	 			\centering
+	 			\includegraphics[width=0.5\linewidth]{vp-4}
+	 			\caption{Velocity Profile for $\alpha=-4$}
+	 			\label{fig:vp-4}
+	 		\end{figure}
+	 		
+	 		\item {\underline{For $\alpha=-4$}:}
+	 		\\Location for maximum velocity is given by:
+	 		$$\frac{y_{max}}{h}=\frac{3}{8}$$
+	 		$$\Longrightarrow y_{max}=\frac{3}{8}h$$
+	 		Location for minimum velocity is given by:
+	 		$$\left(\frac{y}{h}\right)_{u=0}=\frac{3}{4}$$
+	 		$$\Longrightarrow y_{min}=\frac{3}{4}h$$
+	 		Skin fiction corresponding to the moving plate and stationary plate is given by:
+	 		$$\tau_{y=0}=-3\mu\frac{U}{h}$$
+	 		$$\tau_{y=h}=5\mu\frac{U}{h}$$
+	 		Volumetric flow rate is given by:
+	 		$$Q_{\alpha=-4}=hu_{av}=-\frac{hU}{6}$$
+	 		Maximum velocity is given by:
+	 		$$u_{max}=-\frac{9}{16}U$$
+	 		Here, negative sign determines the direction of maximum velocity.
+	 	\end{enumerate}
+	 	\section{Deductions of investigation}
+	 	\subsection{When pressure gradient is favorable}
+	 	As $\alpha$ varies from $1$ to $\infty$,
+	 	\begin{enumerate}
+	 		\item {the location of maximum velocity tends to the middle of the channel and will coincide with the mid section of the channel.} 
+	 		\item{the maximum velocity increases.} 
+	 		\item {Skin friction corresponding to the stationary plate increases in the direction of motion of the upper plate.}
+	 		\item{Skin friction corresponding to the moving plate decreases  in the direction of motion of the upper plate.}
+	 		\item {Volumetric flow rate increases in the positive direction which implies the quantity of fluid moving between the channel increases.
+	 		}
+	 	\end{enumerate}
+	 	\subsection{When pressure gradient is adverse}
+	 	As $\alpha$ varies from $-1$ to -$\infty$,
+	 	\begin{enumerate}
+	 		\item {Location of maximum velocity of the fluid tends to the middle of the channel and will coincide with the midsection in the negative direction of the x-axis.} 
+	 		\item {Skin friction corresponding to the stationary plate increases  in the opposite direction of the fluid flow.}
+	 		\item {Skin friction corresponding to the moving plate decreases  in the direction of fluid flow.} 
+	 		\item {Volumetric flow at $\alpha=-3$ becomes zero because average velocity is equal to $0$, from this point the reverse flow starts.}
+	 	\end{enumerate}
+	 	 When we combine the velocity profile for different values $\alpha$,we get the velocity profile as shown in the figure.
+	 	\begin{figure}[ht]
+	 		\centering
+	 		\includegraphics[width=1\linewidth]{"velocity profile"}
+	 		\caption{velocity profile for different values of $\alpha$}
+	 		\label{fig:velocity-profile}
+	 	\end{figure}
+	 	\section{Conclusion}
+	 	The momentum and energy equations are solved analytically to derive the governing equation and then velocity profile for the governing equations is derived. A dimensionless pressure parameter was introduced in the equation and based on the value of Alpha the behavior of fluid was investigated. When Alpha was equal to zero the flow of the fluid was Couette flow and when Alpha was not equal to zero the velocity profile was investigated based on different values of Alpha. A Graph has been plotted to explain the behavior of fluid with respect to Alpha. Numerical investigations encompasses various components like skin friction corresponding to the moving plate and stationery plate, volumetric flow rate, maximum velocity and the average velocity for different values of alpha.
+	 	
+	 	\chapter{Heat Transfer in Microchannels}
+	 		\section{Introduction}
+	 In neoteric years, Micro fluids has been a major field of discovery or research in fluid dynamics. Micro channel fluid flow is widely studied as heat transfer through such channels is dependent on physical properties of the flow viz Boundary conditions, thermal conductivity etc \cite{rapp}. Within the channel, the roughness of the boundaries impacts the  heat and viscous heat dissipation within the channel\cite{Barletta}.This chapter studies the rise in temperature effect of viscous dissipation in the channel which demonstrates how changing certain conditions can change the temperature profile inside the channel.Several studies on analysis of viscous dissipation in micro flows drew the following conclusions on its impact on the fluid flow:\cite{Gamrat,mokarizadeh,hungyew,Nikuradse}
+	 \begin{enumerate}
+	 	\item{When the dimension of the system being studied decreases below 50 microns, the viscous dissipation  becomes more prominent.Neglecting it will account for asymmetrical results.}
+	    \item {Viscous dissipation effects increase as the channel size decreases. Therefore they should be considered in cases with induced boundary temperatures.}
+	    \item{Reynolds number, Brinkman number and channel dimensions play a vital role in determining the degree of impact of the viscous dissipation  on the fluid flow. Fluids with a high viscosity and low specific heat  capacity can lead to strong viscous dissipation effects even if they are laminar and their Reynolds’ number is low.}
+	\end{enumerate}
+	This chapter includes the analysis of the heat transfer mechanism and the evident temperature rise in the fluid.For different Brinkman number $(Br)$, the thermal response in the fluid is also encapsulated.
+	  \section{Knudsen flow regime}
+	 The Knudsen flow regime refers to a range of flow conditions in which the Knudsen number $(Kn)$ is significant and influences the behavior of the fluid\cite{dimitris}.\\
+	 The flow regime on the basis of $Kn$ number is defined as follows:
+	\begin{center}
+		\begin{tabular}{||c | c ||}
+			\hline
+	 	Regime & Knudsen number range \\
+	 	\hline
+	 	Continuum flow & $Kn\leq 0.001$ \\
+	 	\hline
+	 	The slip flow &  $0.001 < Kn \leq 0.1$\\
+	 	\hline
+	 	The transition flow & $0.1 < Kn \leq 10$\\
+	 	\hline
+	 	Free molecular flow &  $Kn > 10$  \\
+	 	[1ex]
+	 	\hline
+	 	\end{tabular}
+	 	\end{center}
+	 	Based on the upper table,we will first consider continuum flow between the channel to study the heat transfer.
+	 	\section{Flow under No-slip condition} Due to the dimensions of the channel, flow through micro-channels and associated devices are accounted by an elevated velocity gradient\cite{Richardson}, which\hspace*{0.2cm} results\hspace*{0.2cm} in\hspace*{0.2cm} high viscous dissipation effects regardless of the Prandtl number ($Pr$) in the flow\cite{mukharjee}.  
+	 	\subsection{Mathematical formulation}
+	 	The problem involves steady incompressible fluid flow between two infinite parallel plates at different temperatures in $x$ direction of coordinates.
+	 	The upper plate is moving with a velocity $U$ and the lower plate is  stationary and induced pressure gradient is present inside the channel in the positive direction of $x$ axis. $h$ is the perpendicular distance in the $y$ direction of co-ordinate axis.
+	 	\\In the previous chapter (\pageref{Equa}), we have defined the velocity profile for Couette-Poiseuille flow, which is given by,
+	 	\begin{equation}
+	 		u=\frac{U}{h}y+\frac{h^{2}}{2\mu}\left(-\frac{dp}{dx}\right)\frac{y}{h}\left(1-\frac{y}{h}\right)
+	 	\end{equation}  
+	 	Now we will consider the energy equation.
+	 	\\{The energy equation for combined Couette Poiseuille flow is given by,
+	 		\begin{equation}
+	 			\rho C_{v}u\left(\frac{\partial T}{\partial x}\right)=k\left(\frac{\partial^{2}T}{\partial x^{2}}+\frac{\partial^{2}T}{\partial y^{2}}\right)+\mu\left(\frac{\partial u}{\partial y}\right)^{2}
+	 	\end{equation}}
+	 	The flow in this case is along $x$ axis only, therefore velocity is also along $x$ axis, which states that temperature is a function of $y$,
+	 	\begin{equation}
+	 		\Longrightarrow \frac{\partial^{2}T}{\partial x^{2}}=0\hspace*{0.2cm}\textrm{and}\hspace*{0.2cm}\frac{\partial T}{\partial x}=0
+	 	\end{equation} 
+	 	From equation (3.3) equation (3.2) reduces to:
+	 	\begin{equation}
+	 		0=k\left(\frac{d^{2}T} {dy^{2}}\right)+\mu\left(\frac{d u}{d y}\right)^{2}
+	 	\end{equation}
+	 	Which is the governing equation for this case.
+	 	\subsection{Solution of the Governing equation}
+	 	We will calculate derivative of velocity profile first:
+	 	\begin{equation}
+	 		\frac{du}{dy}=\frac{U}{h}\left[(1+\alpha)-\alpha\frac{2y}{h}\right]
+	 	\end{equation}
+	 	Now, squaring both sides in equation (3.5), we get,
+	 	\begin{equation}
+	 		\left(\frac{du}{dy}\right)^{2}=\frac{U^2}{h^{2}}\left[(1+\alpha)^{2}+4\alpha^{2}\frac{y^{2}}{h^{2}}-4\alpha(1+\alpha)\frac{y}{h}\right]
+	 	\end{equation}
+	 	Using equation (3.6) in equation (3.4) and rearranging the equation, we get,
+	 	\begin{equation}
+	 		\frac{d^{2}T}{dy^{2}}=-\frac{\mu}{k}\frac{U^{2}}{h^{2}}\left[(1+\alpha)^{2}+4\alpha^{2}\frac{y^{2}}{h^{2}}-4\alpha(1+\alpha)\frac{y}{h}\right]
+	 	\end{equation}
+	 	Now to determine the temperature $T$, integrating equation (3.7) twice with respect to $y$. We get,
+	 	\begin{equation}
+	 		T=-\frac{\mu U^{2}}{kh^{2}}\frac{y^{2}}{h^{2}}\left[\frac{1}{2}(1+\alpha)^{2}+\frac{1}{3}\alpha^{2}\frac{y^{2}}{h^{2}}-\frac{2}{3}\alpha(1+\alpha)\frac{y}{h}\right]+C_{1}y+C_{2}
+	 	\end{equation}
+	 	Where $C_{1}$ and $C_{2}$ are the arbitrary constants to be determined by boundary conditions.
+	 	\\The boundary conditions for this problem is given by:
+	 	\begin{equation}
+	 		\textrm{when}\hspace*{0.2cm} y=0,\hspace*{0.2cm}T=T_{0}\hspace{0.2cm};\textrm{when}\hspace*{0.2cm} y=h,\hspace*{0.2cm} T=T_{1}
+	 	\end{equation}
+	 	where $T_{1}>T_{0}$\\Invoking boundary conditions on equation(3.8), we get,
+	 	\begin{equation}
+	 		C_{2}=T_{0}\hspace{0.4cm},C_{1}=\frac{T_{1}-T_{0}}{h}+\frac{\mu U^{2}}{kh}\left[\frac{(1+\alpha)^{2}}{2}+\frac{\alpha^{2}}{3}-\frac{2\alpha(1+\alpha)}{3}\right]
+	 	\end{equation}
+	 	Substituting the values of $C_{1}$ and $C_{2}$ in equation (3.8), we get,
+	 	\begin{multline}
+	 		T-T_{0}=-\frac{\mu U^{2}}{kh^{2}}\frac{y^{2}}{h^{2}}\left[\frac{1}{2}(1+\alpha)^{2}+\frac{1}{3}\alpha^{2}\frac{y^{2}}{h^{2}}-\frac{2}{3}\alpha(1+\alpha)\frac{y}{h}\right]\\+\left(\frac{T_{1}-T_{0}}{h}+\frac{\mu U^{2}}{kh}\left[\frac{(1+\alpha)^{2}}{2}+\frac{\alpha^{2}}{3}-\frac{2\alpha(1+\alpha)}{3}\right]\right)y
+	 	\end{multline}
+	 	On further simplification, we get,
+	 	\begin{equation*}
+	 		\frac{T-T_{0}}{T_{1}-T_{0}}=\frac{y}{h}+\frac{\mu U^{2}}{6k(T_{1}-T_{0})} \frac{y}{h} 
+	 	\end{equation*}
+	 	\begin{equation}	
+	 	\left[\alpha^{2}\left(1-3\frac{y}{h}+2\frac{y^{3}}{h^{3}}-4\frac{y^{2}}{h^{2}}\right)+\alpha\left(2-6\frac{y}{h}-4\frac{y^{2}}{h^{2}}\right) +3-3\frac{y}{h}\right] 
+	 	\end{equation}
+	 	Now, let $$\frac{\mu U^{2}}{k(T_{1}-T_{0})}=Br$$
+	 		$$\frac{T-T_{0}}{T_{1}-T_{0}}=\theta\hspace*{0.2cm}\textrm{and}\hspace*{0.2cm}\frac{y}{h}=Y$$
+	 	Here, Br is Brinkman number.
+	 	The equation (12) reduces to,
+	 	\begin{multline}
+	 		\theta =Y+\frac{Br}{6}Y\left[\alpha^{2}\left(1-3Y+2Y^{3}-4Y^{2}\right)\right] \\+\frac{Br}{6}\alpha\left(2-6Y-4Y^{2}\right) + \frac{Br}{6}\left(3-3Y\right)  
+	 	\end{multline}
+	 	Which is the required equation.When  $\alpha =0$, the above equation takes the form,
+	 	\begin{equation*}
+	 		\theta=Y+\frac{Br}{2}Y(1-Y)
+	 	\end{equation*}
+	 	The above equation is a simple case of temperature distribution in Couette flow.
+	 	\section{ Flow under slip condition}
+	 	In this case, the fluid flow is discussed with different boundary conditions to account for surface roughness and slip boundary conditions to analyze the effect of varying factors on the temperature distribution throughout the channel. The conventional fluid theory negate the effects of surface roughness on laminar fluid flow, but recent developments in the Microfluidics suggest that the effects of surface roughness is prominent to the laminar fluid flow and hence should be considered \cite{Gamrat,KandlikarSatish}. The channels in this case being considered is in microns and the knudsen number, in this case, suggests that the classical continuum condition flow regime is applicable with first order slip condition given by Maxwell (1879) must be applied at the boundary conditions \cite{Ba10}.\\ It must be noted that the fluid will move in the channel with an elevated velocity and the cohesive forces between the fluid are capable of overcoming the adhesive forces between the fluid and the surface (due to roughness) and the particles can detach themselves from the surface hence showing a slip at the walls and the fluid is also governed by high shearing effect which will aid the bulk fluid to detach and pull the particles at the wall along with the bulk fluid, which will mimic finite slip at the walls.
+	 	\subsection{Velocity profile for slip condition}
+	 	To account for the roughness of  boundaries and Knudsen flow regime, many literature consider the flow area constriction theory and the condition that there is an increment in the wall shear stress by acknowledging slip boundary conditions \cite{satish}.
+	 	In the slip flow regime, first order slip velocity is considered to be prudent for  first half of the regime  and for the second half of the regime, higher order slip velocity may be required.In this case, we confine our interest to first order slip velocity.
+	 	In this arrangement, it is not possible to know the mean free path of the system therefore we can assume that the fluid is in a feeble rarefied state where surface roughness are accounted for a finite slip at the boundaries\cite{shams}.\\Now the velocity profile for the first order slip condition is given by:
+	 	\begin{equation}
+	 		u=\frac{Uy}{h(1+2\gamma)}+\frac{U\gamma}{1+2\gamma}+\alpha U\left(\frac{y^{2}}{h^{2}}-\frac{y}{h}-\gamma\right)
+	 	\end{equation}
+	 	The first part of the velocity profile is due to Couette flow and the second part is due to Poiseuille under slip condition.
+	 	\subsection{Mathematical formulation}
+	 	In this case, the arrangement is similar to that of in the no slip condition(Art. 3.3.1). The only change in this case is that slip boundary condition is applied on the corresponding velocity profile.
+	 	\subsection{Solution of the governing equations} Here, we will first calculate the derivative of velocity profile under slip condition:
+	 	\begin{equation}
+	 		\frac{du}{dy}=\frac{U}{h(1+2\gamma}+\alpha U\left(\frac{2y}{h^{2}}-\frac{1}{h}\right)
+	 	\end{equation}
+	 	 Now, squaring both sides of the above equation and simplifying the equation we get:
+	 	 \begin{multline}
+	 	 	\left(\frac{du}{dy}\right)^{2}=\frac{U^{2}}{h^{2}}\frac{1}{(1+2\gamma)^{2}} \\ +\alpha^{2}\frac{U^{2}}{h^{2}}\left(4\frac{y^{2}}{h^{2}}+1-4\frac{y}{h}\right)+\frac{2\alpha}{1+2\gamma}\frac{U^{2}}{h^{2}}\left(2\frac{y}{h}-1\right)
+	 	 \end{multline}
+	 	 Using equation (3.16) in the simplified energy equation of the problem, we get:
+	 	 \begin{equation}
+	 	 \frac{d^{2}T}{d x^{2}}=-\frac{\mu U^{2}}{kh^{2}}\left[\frac{1}{(1+2\gamma)^{2}}+\alpha^{2}\left(4\frac{y^{2}}{h^{2}}+1-4\frac{y}{h}\right)+\frac{2\alpha}{1+2\gamma}\left(2\frac{y}{h}-1\right)\right]
+	 	\end{equation}
+	 	Now, to determine the value of T, integrating equation (3.17) twice with respect to $y$, we get:
+	 	\begin{equation}
+	 				\resizebox{1\hsize}{!}{$T=-\frac{\mu U^{2}}{kh^{2}}\left[\frac{y^{2}}{2(1+2\gamma )^{2}}+ \alpha ^{2}\left(\frac{y^{4}}{h^{2}}+\frac{y^{2}}{2}-\frac{2y^{3}}{3h}\right)+\frac{2\alpha}{1+2\gamma}\left(\frac{y^{3}}{3h}-\frac{y^{2}}{2}\right)\right]\\+C_{1}y+C_{2}$}
+	 	\end{equation}
+	 	Where,$C_{1}\hspace*{0.2cm}\textrm{and}\hspace*{0.2cm} C_{2}$ are arbitrary constants to be determined by boundary conditions.The boundary condition for this problem is given by:
+	 		\begin{equation}
+	 		\textrm{when}\hspace*{0.2cm} y=0,\hspace*{0.2cm}T=T_{0}\hspace{0.2cm};\textrm{when}\hspace*{0.2cm} y=h,\hspace*{0.2cm} T=T_{1}
+	 	\end{equation}
+	 	where, $$T_{1}>T_{0}$$Invoking these boundary conditions on equation (3.18), we get:
+	 	$$C_{2}=T_{0}\textrm{,}$$
+	 	\begin{equation}
+	 		C_{1}=\frac{1}{h}\left[T_{1}-T_{0}+\frac{\mu U^{2}}{k}\frac{y}{h}\left(\frac{1}{2(1+2\gamma)^{2}}+\frac{\alpha^{2}}{2}-\frac{\alpha}{3(1+2\gamma)}\right)\right]
+	 	\end{equation} 
+	 	Substituting the values of $C_{1}$ and $C_{2}$ in equation (3.18), we get:
+	 	\begin{equation}
+	 		\begin{split}
+	 		T=-\frac{\mu U^{2}}{kh^{2}}\left[\frac{y^{2}}{2(1+2\gamma )^{2}}+\alpha ^{2}\left(\frac{y^{4}}{h^{2}}+\frac{y^{2}}{2}-\frac{2y^{3}}{3h}\right)+\frac{2\alpha}{1+2\gamma}\left(\frac{y^{3}}{3h}-\frac{y^{2}}{2}\right)\right]\\+\frac{y}{h}\left[T_{1}-T_{0} + \frac{\mu U^{2}}{k}\left( \frac{1}{2(1+2\gamma)^{2}}+\frac{\alpha^{2}}{2}-\frac{\alpha}{3(1+2\alpha)}\right) \right]+T_{0}
+	 		\end{split}
+	 	\end{equation}
+	 	On further simplification, we get:
+	 	\begin{multline}
+	 		\frac{T-T_{0}}{T_{1}-T_{0}}=\frac{y}{h}+\frac{\mu U^{2}}{\kappa(T_{1}-T_{0})}\frac{y}{h}\left[\frac{1}{2(1+2\gamma ^{2})}+\frac{\alpha^{2}}{2}-\frac{\alpha}{3(1+2\gamma)}\right]\\-\frac{\mu U^{2}}{\kappa(T_{1}-T_{0})}\left[\frac{y}{h}\frac{1}{2(1+2\gamma)^{2}} -\alpha^{2}\frac{y}{h} \times \left(\frac{y^{2}}{3h^{2}}+\frac{1}{2}-\frac{2y}{3h}\right)\right] \\-\frac{\mu U^{2}}{\kappa(T_{1}-T_{0})}\left[ -\frac{2\alpha}{1+2\gamma}\frac{y}{h}\left(\frac{y}{3h}-\frac{1}{2}\right)\right]
+	 	\end{multline}
+	 	Let,$$\theta=\frac{T-T_{0}}{T_{1}-T_{0}},\hspace*{0.3cm}Br=\frac{\mu U^{2}}{\kappa(T_{1}-T_{0})},\hspace*{0.3cm}Y=\frac{y}{h},\hspace*{0.3cm}\beta=\frac{1}{2(1+2\gamma)^{2}}$$
+	 	to be the dimensionless parameters. Substituting above values in equation (3.22) and with further simplification, we get:
+	 	\begin{multline}
+	 		\theta=Y+Br\frac{Y}{2}\alpha^{2}\left\{1-\frac{Y}{3}\left(2Y^{2}-4Y+3\right)\right\}\\-Br.\frac{Y}{2}\alpha\left[\frac{\left\{1+Y(2Y-3)\right\}}{6(1+2\gamma)}\right]+Br\cdot\frac{Y}{2}[\beta(1-Y)]
+	 	\end{multline}
+	 	Equation (3.23) is the temperature distribution for Couette poiseuille flow with first order slip condition.\\When $\alpha=0$, above equation reduces to,
+	 	\begin{equation}
+	 		\theta=Y+Br\cdot\frac{Y}{2}[\beta(1-Y)]
+	 	\end{equation}
+	 	which is the temperature distribution of Couette flow under first order slip condition.
+	 	\section{Results and deductions} The results of this chapter is summarized as follows:
+	 	\subsection{Temperature Profile for no-slip condition}
+	 	\begin{enumerate}
+	 		\item {\underline{For Couette flow}:}
+	 	Graph has been plotted to analyze the behavior of temperature distribution with variation in Brinkman number$Br$. When the Brinkman number is equal to zero then temperature varies linearly. As Brinkman number increases, the temperature distribution increases with respect to dimensionless  parameter $y$ and as Brinkman number decreases the temperature distribution decreases with respect to dimensionless parameter y.
+	 	Here, negative Brinkman number is achieved when the arrangements of plates are reversed, i.e.  the lower plate has greater temperature and the upper plate has lower temperature. 
+	 	\item{\underline{For Couette - Poiseuille flow}:}
+	 	For combined flows, deviation and temperature distribution is dependent on two parameters that is Brinkman number and dimensionless parameter $\alpha$. 
+	 	For different values of $Br$ when $\alpha$ is varied, we observe a change in the temperature distribution with respect to $Y$.
+	 	At Brinkman number 0.2, when $\alpha$ increases from 1, the temperature distribution increases with respect to $Y$ Whereas when $\alpha$ decreases from -1 we observe that the flow is happening in the opposite direction to that of the movement of the upper plate and the temperature increases in the opposite direction to that of the plate. 
+	 	Since we are aware that the back flows happen when $\alpha<-3$, the temperature distribution starts increasing in the opposite direction after $\alpha=-3$.
+	 	At Brinkman number 2, when $\alpha$ increases from $1$, the temperature distribution shows a combined effect and increases with respect to $Y$ whereas when $\alpha$ decreases from -1 the effect is again combined and happens in the opposite direction.\\Similarly when Brinkman number assumes negative values the graph of temperature distribution will get inverted with respect to the co-ordinate axis and temperature distribution will increase in the opposite direction. \\We can deduce that the temperature distribution varies in favor or in adverse pressure gradient and the effect of Brinkman number aids the variation in temperature.
+	 \end{enumerate}
+	 	\subsection{Temperature Profile under slip condition} 
+	 	When we account for slip condition and roughness of the surface for thermal response, the conditions results in the control of rise in temperature inside the channel and the viscous dissipation effect is controlled to a greater extent which exclaims that the slippage is controlling the increment in temperature.
+	 		 	\begin{enumerate}
+	 		\item {\underline{For Couette Flow}:-}Under slip condition, the temperature distribution is dependent on two parameters, they are Brinkman number and $\beta$. Here $\beta$ is implicitly dependent on $\gamma$ and Knudsen  number. Many literature suggest that due to this implicit relation of $\beta$ the value of beta will remain positive and hence this condition will result in increment of the temperature with respect to $Y$. Higher the value of $\beta$, higher the temperature of the fluid in between the channel. The effect of Brinkman number with respect to beta is shown in the figure.
+	 		\item {\underline{For Couette Poiseuille flow}:-}
+	 		Under slip condition, the combined Couette Poiseuille  flow is dependent on multiple parameters. Viz $Br$,$\gamma$ ,$\beta$,$\alpha$.etc
+	 		All these values contribute to the increased temperature distribution in the channel depending whether one parameter is greater than other.
+	 		At $\alpha=0$, Combined Couette Poiseuille flow reduces to simple Couette flow. As $\alpha$ increase in the combined flows, the temperature distribution increases in the channel.
+	 	\end{enumerate}
+	 	\subsection{Effect of surface roughness}
+	 	Some\hspace*{0.2cm} researchers\hspace*{0.2cm} in\hspace*{0.2cm} the field of microfluidics consider slip with smooth surfaces by assuming that the smooth wall will result in maximum peculiar reflections at the boundary which will enhance slip whereas there are some literature which suggests that a surface roughness is observed to enhance the effect of slip which evidently results in the elevated slip velocity\cite{shams}.The observation is highly applicable in the case of fluid with slightly rarefied medium.
+	 	When we account for the tangential momentum accommodation coefficient $\sigma_{v}$, Knudsen Number and slip conditions at the boundary,a controlled viscous dissipation effect is observed.As the shear in the flow increases, the effect was subdued by counteracting the effect of the rising Brinkman number.The temperature control signifies that the viscosity of the fluid in the channel would not decrease as it would if the increment of temperature in the channel is high.
+	 	\section{Conclusion}
+	 	The problem was solved by imposing assumptions associated with the problem in the energy equation and the Navier Stokes equation under steady case for Couette and Poiseuille Flow.The cases of no slip condition and first order slip condition by Maxwell was accommodated and the equations were solved analytically to determine the temperature distribution in the channels.The results evidently prove that the viscous dissipation in the channel is dominant with increment in the Brinkman number as the dimensions of the channel is small and the shear is high.In analysis of thermal response in between the microchannels the viscous dissipation effect must be considered to analyze the thermal response of one factor with respect to other.The effects when we consider the slip at the boundary shows that there is a control in the increment in the temperature rise in the channel.
+	 	
+	 	\begin{figure}[ht]
+	 		\centering
+	 		\includegraphics[width=0.5\linewidth]{"CP Flow nsc Br0.2"}
+	 		\caption{Thermal response for Couette - Poiseuille flow under no slip condition.}
+	 		\label{fig:cp-flow-nsc-br0}
+	 	\end{figure}
+	 	\begin{figure}[ht]
+	 		\centering
+	 		\includegraphics[width=0.5\linewidth]{"CP FLOW NSC BR2"}
+	 		\caption{Thermal response for Couette Poiseuille flow under no slip condition.}
+	 		\label{fig:cp-flow-nsc-br2}
+	 	\end{figure}
+	 	
+	 	\begin{figure}[ht]
+	 		\centering
+	 		\includegraphics[width=0.5\linewidth]{"Couette flow no slip"}
+	 		\caption{Thermal response of Couette flow for no slip condition.}
+	 		\label{fig:couette-flow-no-slip}
+	 	\end{figure}
+	 	
+	 	\begin{figure}[ht]
+	 		\centering
+	 		\includegraphics[width=0.5\linewidth]{"Couette flow slip condition br2"}
+	 		\caption[Thermal response for Couette - Poiseuille flow under slip condition.]{Thermal response for Couette - Poiseuille flow under slip condition.}
+	 		\label{fig:couette-flow-slip-condition-br2}
+	 	\end{figure}
+	
+	 	\begin{thebibliography}{29}
+	 		 \addcontentsline{toc}{section}{Bibliography}
+	 		\bibitem{mokarizadeh} Asgharian Maedeh, Mokarizadeh Abdol Hadi, and Raisi Ahmadreza; Heat transfer in couette-poiseuille flow between parallel
+	 		plates of the giesekus viscoelastic fluid, Journal of Non-Newtonian
+	 		Fluid Mechanics, Vol. 196, 06 2013.
+	 		
+	 		\bibitem{Barletta}  Barletta Antonio and Zanchini E; Mixed convection with variable
+	 		viscosity in an inclined channel with prescribed wall temperatures,
+	 		International Communications in Heat and Mass Transfer - INT
+	 		COMMUN HEAT MASS TRANS, Vol. 28, pp. 1043–1052, 11 2001.
+	 		
+	 		\bibitem{gk10} Batchelor G.K.; An Introduction to Fluid Dynamics, Cambridge
+	 		Mathematical Library, Cambridge University Press, 1967.
+	 		
+	 		\bibitem{Ba10} Beskok Ali; Validation of a new velocity-slip model for separated
+	 		gas microflows, Numerical Heat Transfer, Part B-fundamentals -
+	 		NUMER HEAT TRANSFER PT B-FUND, Vol. 40, pp. 451–471, 12 2001.
+	 	
+	 		\bibitem{rapp}B.E. Rapp.; Microfluidics: Modeling, Mechanics and Mathematics,
+	 		Micro and Nano Technologies, Elsevier Science, 2016.
+	 		
+	 		\bibitem{chorlton} Chorlton, F.; Textbook of Fluid Dynamics, Students' paperback edition, Van Nostrand Company, 01 1995.
+	 		
+	 		\bibitem{Gamrat}  Gamrat Gabriel, Favre-Marinet Michel, PERSON S., Baviere R.,
+	 		and Ayela Frederic; An experimental study and modelling of
+	 		roughness effects on laminar flow in microchannels, Journal of
+	 		Fluid Mechanics, Vol. 594, pp. 399 – 423, 01 2008.
+	 		
+	 		\bibitem{hungyew} Hung Yew; A comparative study of viscous dissipation effect on
+	 		entropy generation in single-phase liquid flow in microchannels,
+	 		International Journal of Thermal Sciences - INT J THERM SCI, Vol.
+	 		48, pp. 1026–1035, 05 2009.
+	 		
+	 		\bibitem{KandlikarSatish} Kandlikar Satish; Exploring roughness effect on laminar internal flow–are we ready for change?, Nanoscale and Microscale Thermophysical Engineering - NANOSCALE MICROSCALE THERMO
+	 		Eng, Vol. 12, pp. 61–82, 01 2008.
+	 		
+	 		\bibitem{satish} Kandlikar Satish, Schmitt Derek, Carrano Andres, and James Taylor; Characterization of surface roughness effects on pressure drop in single-phase flow in minichannels, Physics of Fluids, Vol. 17 ,10 2005.
+	 		
+	 		\bibitem{sk} Kandlikar, S., Garimella, S., Li, D., Colin, S., King, M. R.; Heat Transfer and Fluid Flow in Minichannels and Microchannels, Netherlands, Elsevier Science, 2005.
+	 		
+	 		\bibitem{Lopez} Lopez Lemus Jorge and Velasco Rosa; Slip boundary conditions in
+	 		couette flow; Physica A-statistical Mechanics and Its Applications
+	 		- PHYSICA A, Vol. 274, pp. 454–465, 12 1999.
+	 		
+	 		\bibitem{landau} Landau L.D. and Lifshitz E.M. Fluid Mechanics, volume 6. Elsevier Science, 1987.
+	 		
+	 		\bibitem{wilson}  Marques Junior Wilson, Kremer Gilberto, and Sharipov Felix.
+	 		Couette flow with slip and jump boundary conditions. Continuum
+	 		Mechanics and Thermodynamics, Vol. 12, pp. 379–386, 12 2000.
+	 		
+	 		
+	 		\bibitem{dimitris} Misdanitis Serafeim and Valougeorgis Dimitris; Couette flow with
+	 		heat transfer in the whole range of the knudsen number. Proceedings of the 6th International Conference on Nanochannels, Microchannels, and Minichannels, ICNMM2008, 01 2008.
+	 		
+	 		\bibitem{mukharjee} Mukherjee Siddhartha, Biswal Prayag, Chakraborty Suman, and
+	 		Dasgupta Sunando; Effects of viscous dissipation during forced
+	 		convection of power-law fluids in microchannels. International
+	 		Communications in Heat and Mass Transfer, Vol. 89, pp. 83–90, 11 2017.
+	 		
+	 		\bibitem{Nikuradse}  Nikuradse J.; Laws of flow in rough pipes. NACA TM, Vol. 3, 01 1950.
+	 	
+	 					
+	 		\bibitem{pantakratoras} Pantokratoras Asterios; The classical plane Couette Poiseuille flow with variable properties; Journal of Fluids Engineering, Transactions of ASME, J FLUID ENG, pp 128, 09 2006. 
+	 	    
+	 	    \bibitem{raisinghania}  Raisinghania M.D.; Fluid Dynamics: With Complete Hydrodynamics and Boundary Layer Theory, S. Chand and company pvt. ltd., edition 11th, 2013.
+	 	    
+	 	    \bibitem{rajputrk}  Rajput R.K.; A Textbook of Heat and Mass Transfer, S. Chand and company pvt. ltd., edition 5th,
+	 	    2012.
+	 	    
+	 	    \bibitem{Richardson} Richardson S.; On the no-slip boundary condition, Journal of
+	 	    Fluid Mechanics, Vol. 59, pp. 707 – 719, 08 1973.
+	 	    
+	 	    \bibitem{rosentrator}  Rosentrater Kurt A. and Balamuralikrishna Radha; Essential
+	 		highlights of the history of fluid mechanics, pages 1–2, 2005.
+	 	
+	 		\bibitem{Shabbir}  Shabbir Sarah, Garvey Seamus, Dakka Sam, and Rothwell Benjmain; Heat transfer of couette flow in micro-channels: an analytical model of seals, 03 2020.
+	 		
+	 		\bibitem{shams} Shams M., Khadem M.H., and Hossainpour S.; Direct simulation
+	 		of roughness effects on rarefied and compressible flow at slip flow
+	 		regime, Vol. 36(1), 2009.
+	 		
+	 		\bibitem{shu}  Shu Jian-Jun, Teo JI, and Chan Weng; Fluid velocity slip and
+	 		temperature jump at a solid surface, Applied Mechanics Reviews, Vol. 
+	 		69, pp. 13, 03 2017.
+	 		
+	 		\bibitem{warsi} Warsi Z.U.A.; Fluid dynamics : theoretical and computational approaches. CRC Press, 2nd edition, 1993.
+	 		
+	 		\bibitem{frank} White M.Frank.; Viscous Fluid Flow, McGraw Hill Inc., McGraw Hill Education (India) Pvt. Limited, 2nd edition, 1991.
+	 		
+	 		\bibitem{yuansw} Yuan S.W.; Foundations of Fluid Mechanics, Prentice Hall of
+	 		India, 01 1967.
+	 		
+	 		\bibitem{zhao}  Zhao Tianyi and Ji Yuan; Gas diffusion and flow in shale
+	 		nanopores with bound water films, Atmosphere, Vol. 13, pp. 940, 06 2022.
+	 		
+	 		
+	 	
+ 	 	\end{thebibliography}
+\end{document}
